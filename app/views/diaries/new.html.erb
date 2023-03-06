@@ -1,0 +1,20 @@
+<div class="p-5 mb-4 bg-light rounded-3 w-75 mx-auto position-absolute top-50 start-50 translate-middle">
+  <div class="container-fluid py-5 ">
+    <h1 class="display-5 fw-bold">Novo registro diário</h1>
+    <%= link_to 'Ver Diário Completo', diaries_path, class:"btn btn-secondary" %>
+    <p> Aqui você pode escrever livremente e se expressar pelas palavras! Faça disso o seu diário para dias importantes! </p>
+    <%= form_with(model: @diary) do |f|%>
+
+        <div class="mb-3">
+          <%= f.label "Título", class:"form-label"%>
+          <%= f.text_field :title, class:"form-control", placeholder:"Título"%>
+        </div>
+        <div class="mb-3">
+          <%= f.label "Conte-nos sobre seu dia", class:"form-label"%>
+          <%= f.text_area :description, rows:10, placeholder:"Escreva aqui coisas interessantes que queira registrar" ,class:"form-control"%>
+        </div>
+  
+        <%= f.submit "Registrar", class:"btn btn-success"%>
+    <%end%>
+  </div>
+</div>

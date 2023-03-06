@@ -1,0 +1,17 @@
+<style>
+  #card{
+      background-color: white
+  }
+</style>
+
+<div class="p-5 mb-4 w-75 bg-light mx-auto" style="border-top-radius:5px">
+  <div class="container-fluid py-5 mt-5">
+<div id="card col-md-*">
+  <%= image_tag @drawing.dataURL, class:"image-responsive"%>
+</div>
+  <hr>
+  <h3> <%= @drawing.title%> </h3>
+  <h5><%=@drawing.created_at.strftime("%d/%m/%Y")%></h5>
+</div>
+<%= link_to 'voltar', :back, class:"btn btn-primary" %>
+</div>

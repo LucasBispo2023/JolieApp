@@ -1,0 +1,73 @@
+<style>
+  body{
+      background-color:#eee;
+  }
+  .ans {
+    margin-left: 36px !important;
+  }
+  .answers-list{
+    display: flex;
+    flex-direction: column;
+  }
+  .btn:focus {
+    outline: 0 !important;
+    box-shadow: none !important;
+  }
+  .btn:active {
+    outline: 0 !important;
+    box-shadow: none !important;
+  }
+</style>
+<%= javascript_include_tag 'quiz' %>
+<div class="container mt-5">
+  <h1 class="text-bg-dark">Quiz da Jolie</h1>
+  <div class="d-flex justify-content-center row">
+    <% @questions.each do |question| %>
+      <div class="col-md-12 mb-2">
+        <div class="row question bg-white p-3 border-bottom d-flex">
+          <div class="col-9">
+            <div class="d-flex flex-row align-items-center question-title">
+              <h3 class="text-danger">Q.</h3>
+              <h5 class="mt-1 ml-2"><%= question.description %></h5>
+            </div>
+            <div class="answers-list">
+              <% question.answers.each do |answer| %>
+                <div class="ans ml-2 mt-2 btn-group">
+                  <button class="answer-button btn btn-outline-primary" id=<%="#{question.id}"%> data-correct=<%="#{answer.isCorrect}"%>> <%="#{answer.description}"%> </button>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <div class="col-3" id=<%="bg-icone-#{question.id}"%>>
+              <%=image_tag "pensando.png", class:"img-fluid", id:"icone-jolie-#{question.id}", size:"253x253"%>
+            </div>
+          </div>
+        </div>
+      <% end %>
+       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Salvar</button>
+       <%= link_to 'Ver Ranking', quiz_quiz_games_ranking_path, class:"btn btn-secondary" %>
+    </div>
+  </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <label for="nameQuiz" class="form-label">Qual o seu nome?</label>
+        <input type="text" class="form-text" id="nameQuiz">
+        <input type="hidden" class="form-text hidden" id="scoreQuiz" value=0>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary" onClick="saveAnswers()" data-bs-dismiss="modal">Confirmar Resposta</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Modal -->

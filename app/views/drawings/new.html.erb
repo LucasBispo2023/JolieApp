@@ -1,0 +1,72 @@
+<%= javascript_include_tag 'canvas'%>
+<%= stylesheet_link_tag 'style' %>
+<div class="container-fluid" style="padding:70px"></div>
+<div class="col-md-6 col-lg-4">
+  <div class="card mb-4 bg-light rounded-3 w-100 mx-auto position-absolute top-50 start-50 translate-middle h-75 bg-dark" style="min-height: calc(100vh-70px);" id="jumbotrom">
+    <div class="card">
+      <h2 class="bg-light"> Desenhe algo que te faça feliz hoje! </h2>
+      <%= link_to 'Ver Galeria', drawings_path %>
+            <div class="btn-toolbar" role="toolbar">
+        <div class="btn-group-responsive me-2" role="group">
+          <button type="button" class="btn btn-outline-primary" style="background-color:#ffffff" id="ffffff" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#000000" id="000000" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#fd3d22" id="fd3d22" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#00ff34" id="00ff34" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#6b76fd" id="6b76fd" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#fed5c5" id="fed5c5" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#fe00ce" id="fe00ce" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#0cf8ff" id="0cf8ff" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#f6f827" id="f6f827" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#fe9716" id="fe9716" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#479a54" id="479a54" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#eea6fb" id="eea6fb" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#dd597d" id="dd597d" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#d726fe" id="d726fe" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#dd597d" id="dd597d" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#d726fe" id="d726fe" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#6e889d" id="6e889d" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#00b4f6" id="00b4f6" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#b68f01" id="b68f01" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#c8fbe4" id="c8fbe4" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#fe0093" id="fe0093" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#22ffa7" id="22ffa7" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#e2ef9e" id="e2ef9e" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#88cf08" id="88cf08" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#bd7197" id="bd7197" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#7e7dcd" id="7e7dcd" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#fd6855" id="fd6855" onClick="setColor(this.id)"></button>
+          <button type="button" class="btn btn-outline-primary" style="background-color:#e48e73" id="e48e73" onClick="setColor(this.id)"></button>
+        </div>
+        <hr>
+        <div class="ms-auto" style="justify-content: space-around;align-items: center;display: flex;flex-direction: row;">
+          <label for="rangeLineWidth" class="form-label">Espessura da linha de desenho</label>
+          <input type="range" class="form-range" min="1" max="15" id="rangeLineWidth" style="width: 25%" value=1>
+        </div>
+      </div>
+
+      <canvas id="canvas" class="" style=""></canvas>
+      
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Salvar</button>
+    </div>
+  </div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <label for="drawingTitle" class="form-label">Qual o título do desenho de hoje?</label>
+        <input type="text" class="form-text" id="drawingTitle">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary" id="save-button" data-bs-dismiss="modal">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Modal -->

@@ -1,0 +1,21 @@
+    
+<div class="p-5 mb-4 bg-light mx-auto" style="border-top-radius:5px">
+<div class="container-fluid py-5 mt-5">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+  <% @drawings.each do |draw|%>
+    <div class="col">
+      <h5><%= draw.title%></h5>
+      <div class="card mb-3">
+        <%=image_tag(draw.dataURL, size:"290x145")%>
+      </div>
+      <p> Realizado em: <%= draw.created_at.strftime("%d/%m/%Y") %> </p>
+      <div class="btn-group">
+      <%= link_to 'Detalhes', drawing_path(draw), class:"btn btn-primary", style:"border-top-right-radius:5px; border-bottom-right-radius:5px"%>
+      <%= button_to 'Apagar', drawing_path(draw), method: :delete, data:{turbo_confirm: "Deseja realmente apagar este desenho?"}, class:"btn btn-danger" %>
+      </div>
+    </div>
+  <%end%>
+</div>
+
+  </div>
+</div>

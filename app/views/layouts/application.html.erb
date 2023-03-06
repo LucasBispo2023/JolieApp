@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html class="h-100">
+  <head>
+    <title>JolieApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application-esbuild","data-turbo-track": "reload", defer: true, 'data-turbo-track': 'reload', 'data-turbo-events': 'turbo:load' %>
+  </head>
+  <body>
+    <body class="d-flex flex-column h-100 bg-dark">
+      <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Jolie Beatriz</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                  <%= link_to 'Ínicio', root_path, class:"nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'Quiz da Jolie', quiz_quiz_games_path, class:"nav-link", data:{turbo:false} %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'Área artística', new_drawing_path, class:"nav-link", data: {turbo: false} %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'Área do dia a dia', new_diary_path, class:"nav-link" %></li>
+                <li class="nav-item">
+                  <%= link_to 'Com Amor', main_with_love_path, class:"nav-link" %></li>
+                <% if current_admin %>
+                  <li class="nav-item">
+                    <%= button_to 'Deslogar', destroy_admin_session_path,method: :delete, class:"btn btn-outline-primary" %></li>
+                <%end%>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <!-- End Fixed navbar -->
+      </header>
+      <!-- Begin page content -->
+      <main class="flex-shrink-0" id="main">
+        <%=yield%>
+      </main>
+      <!-- End page content -->
+    </body>
+  </html>

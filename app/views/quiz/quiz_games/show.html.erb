@@ -1,0 +1,23 @@
+<div class="p-5 mb-4 bg-light rounded-3 w-75 mx-auto position-absolute top-50 start-50 translate-middle">
+  <div class="container-fluid py-5 ">
+    <h1 class="display-5 fw-bold">Ranking</h1>
+    <p> Quais amigos seus mais sabe sobre ti?</p>
+    <table class="table table-responsive table-striped mx-auto">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Pontuação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @records.each do |record|%>
+          <tr>
+            <td><%= record.name %></td>
+            <th scope="row"><%= record.score %></th>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>

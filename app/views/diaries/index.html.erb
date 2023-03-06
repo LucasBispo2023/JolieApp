@@ -1,0 +1,46 @@
+  <style>
+  body {
+      background-color: #F8F8F8;
+      font-family: 'Helvetica Neue', sans-serif;
+  }
+
+  .paper {
+      background-image: url("https://images.pexels.com/photos/7002683/pexels-photo-7002683.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+      background-size: cover;
+      padding: 20px;
+      margin-top: 50px;
+      border: 1px solid #D8D8D8;
+      box-shadow: 0px 0px 10px #D8D8D8;
+      font-size: 18px;
+      line-height: 1.5;
+      min-height: 700px;
+      font-family: 'Yellowtail', cursive;
+  }
+</style>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Yellowtail" rel="stylesheet">
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <% @diaries.each do |diary|%>
+          <div class="paper">
+            <h3><%= diary.title%></h3>
+            <p><%= diary.description%></p>
+            <p>Jolie Beatriz</p>
+            <p><%= diary.created_at.strftime("%d/%m/%Y")%></p>
+            <footer>
+              <div class="d-flex" style="flex-direction: row-reverse"><%= paginate @diaries, :prev_label => "anterior", :next_label => "próximo", :window => 0 %>
+              </div>
+            </footer>
+          </div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
