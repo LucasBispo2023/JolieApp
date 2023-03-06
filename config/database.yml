@@ -79,12 +79,5 @@ development:
 #
 production:
   <<: *default
-production:
-  adapter: postgresql
-  encoding: utf8
-  database: JolieApp
-  username: jolieapp
-  password: Zr2QEfT3NxeV4TE8LbPbC4wbdkXjM5cj
-  host: dpg-cg2lncm4dada1e1vq220-a
-  port: 5432
+  url: <%= ENV['DATABASE_URL'] %>
 
