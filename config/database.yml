@@ -79,5 +79,5 @@ development:
 #
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  url: "postgres://jolieapp:Zr2QEfT3NxeV4TE8LbPbC4wbdkXjM5cj@dpg-cg2lncm4dada1e1vq220-a/jolieapp"
 
